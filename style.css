@@ -4,26 +4,25 @@ Layout mobile first
   Sort alphabetically
 ****** */
 
-
 /* ****** Custom Properties ****** */
-:root{
-	--first-color: #F05454;
+:root {
+  --first-color: #f05454;
   --first-alpha-color: rgba(240, 84, 84, 0.75);
   --second-color: #222831;
   --second-alpha-color: rgba(34, 40, 49, 0.75);
-  --third-color: #30475E;
+  --third-color: #30475e;
   --third-alpha-color: rgba(48, 71, 94, 0.75);
   --white-color: #fff;
   --gray-light-color: #f3f3f3;
   --gray-color: #ccc;
   --gray-dark-color: #666;
   --black-color: #000;
-  --link-color: #509EE3;
+  --link-color: #509ee3;
   --title-color: #333;
   --text-color: #222;
   --white-alpha-color: rgba(255, 255, 255, 0.5);
   --black-alpha-color: rgba(0, 0, 0, 0.5);
-  --font: "Raleway", sans-serif;
+  --font: 'Raleway', sans-serif;
   --max-width: 1200px;
   --header-height: 4rem;
 }
@@ -98,7 +97,6 @@ img {
 p {
   line-height: 1.6;
 }
-
 
 /* ****** Components ****** */
 
@@ -214,13 +212,13 @@ p {
   resize: none;
 }
 
-.contact-form input[type="submit"] {
+.contact-form input[type='submit'] {
   margin: 0;
   cursor: pointer;
   transition: all 0.5s ease-out;
 }
 
-.contact-form input[type="submit"]:hover {
+.contact-form input[type='submit']:hover {
   opacity: 0.75;
 }
 
@@ -265,11 +263,10 @@ p {
     grid-column: span 2;
   }
 
-  .contact-form input[type="submit"] {
+  .contact-form input[type='submit'] {
     margin-left: 0;
   }
 }
-
 
 /* ****** HeroImage ****** */
 .hero-image {
@@ -309,7 +306,6 @@ p {
   border: 0;
   cursor: pointer;
   background-color: var(--second-color);
-
 }
 
 /* Change color of icons svg */
@@ -413,11 +409,10 @@ p {
 }
 
 /* Makes the modal window open through its id */
-.modal[id|="trabajo"]:target {
+.modal[id|='trabajo']:target {
   opacity: 1;
   pointer-events: auto;
 }
-
 
 /* ****** ProgressBar ****** */
 progress {
@@ -518,7 +513,7 @@ progress::-moz-progress-bar {
   text-align: right;
 }
 
-@media screen and (min-width:1024px) {
+@media screen and (min-width: 1024px) {
   .full-lg-screen {
     width: 100%;
     min-height: 100vh;
@@ -623,6 +618,7 @@ progress::-moz-progress-bar {
   width: 100%;
   margin: 0 auto;
   display: block;
+  padding: 1rem;
 }
 
 .portfolio-card img {
@@ -720,7 +716,7 @@ progress::-moz-progress-bar {
 }
 
 /* ****** Tablet version ****** */
-@media screen and (min-width:768px) {
+@media screen and (min-width: 768px) {
   .contact-cards {
     display: grid;
     grid-template-columns: repeat(2, 48%);
@@ -768,7 +764,6 @@ progress::-moz-progress-bar {
   .services .section-title {
     grid-column: span 3;
   }
-
 }
 
 /* ****** Descktop version ****** */
