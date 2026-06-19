@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+
+  <!-- Patrón decorativo: bloques tipo Bento Grid -->
+  <rect x="40" y="40" width="80" height="80" rx="8" fill="url(#accent)" opacity="0.15"/>
+  <rect x="140" y="40" width="120" height="40" rx="6" fill="#a78bfa" opacity="0.25"/>
+  <rect x="40" y="140" width="60" height="120" rx="8" fill="#6366f1" opacity="0.2"/>
+  <rect x="120" y="100" width="140" height="80" rx="8" fill="url(#accent)" opacity="0.3"/>
+
+  <!-- Texto principal -->
+  <text x="200" y="180" text-anchor="middle" fill="#e0e7ff" font-size="22" font-family="system-ui, -apple-system, sans-serif" font-weight="600">
+    Servicio VTEX
+  </text>
+  <text x="200" y="210" text-anchor="middle" fill="#a78bfa" font-size="13" font-family="system-ui, -apple-system, sans-serif">
+    Storefront Implementation
+  </text>
+
+  <!-- Badge esquina -->
+  <rect x="280" y="220" width="80" height="24" rx="12" fill="#6366f1" opacity="0.9"/>
+  <text x="320" y="237" text-anchor="middle" fill="#ffffff" font-size="11" font-family="system-ui, -apple-system, sans-serif" font-weight="600">
+    VTEX
+  </text>
+</svg>

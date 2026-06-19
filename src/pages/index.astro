@@ -1,0 +1,154 @@
+---
+// ============================================
+// HOMEPAGE — BENTO GRID + REACT ISLAND
+// ============================================
+
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import { StorefrontShowcase } from '../components/react/StorefrontShowcase'
+
+// Obtener proyectos desde Content Collections
+const projects = await getCollection('projects')
+---
+
+<Layout title='Carlos Usuga — Portfolio'>
+  <!-- HERO -->
+  <section id='about' class='max-w-6xl mx-auto px-4 py-16 md:py-24 scroll-mt-20'>
+    <div class='grid grid-cols-1 md:grid-cols-12 gap-4'>
+      <!-- Card principal: presentación -->
+      <div
+        class='md:col-span-8 bg-gradient-to-br from-purple-900/40 to-slate-900 border border-purple-500/20 rounded-3xl p-8 md:p-12'
+      >
+        <p class='text-purple-200 dark:text-purple-400 font-medium mb-2'>Hola, soy</p>
+        <h1 class='text-4xl md:text-6xl font-bold mb-4'>Carlos Usuga</h1>
+        <p class='text-xl text-purple-50 dark:text-slate-300 mb-6'>
+          Frontend Engineer especializado en
+          <span class='text-purple-200 dark:text-purple-400'>VTEX</span>,
+          <span class='text-purple-200 dark:text-purple-400'>React</span> y
+          <span class='text-purple-200 dark:text-purple-400'>TypeScript</span>
+        </p>
+        <p class='text-purple-100/80 dark:text-slate-400 leading-relaxed'>
+          +2 años construyendo experiencias de e-commerce enterprise. Apasionado por la
+          arquitectura limpia, el rendimiento y el código que otros pueden mantener.
+        </p>
+        <div class='flex flex-wrap gap-3 mt-6'>
+          <span
+            class='px-3 py-1 bg-purple-500/20 border border-purple-300/40 text-purple-50 dark:text-purple-200 rounded-full text-sm'
+          >
+            VTEX IO
+          </span>
+          <span
+            class='px-3 py-1 bg-purple-500/20 border border-purple-300/40 text-purple-50 dark:text-purple-200 rounded-full text-sm'
+          >
+            React 19
+          </span>
+          <span
+            class='px-3 py-1 bg-purple-500/20 border border-purple-300/40 text-purple-50 dark:text-purple-200 rounded-full text-sm'
+          >
+            GraphQL
+          </span>
+          <span
+            class='px-3 py-1 bg-purple-500/20 border border-purple-300/40 text-purple-50 dark:text-purple-200 rounded-full text-sm'
+          >
+            Node.js
+          </span>
+        </div>
+      </div>
+
+      <!-- Card: años de experiencia -->
+      <div
+        class='md:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 flex flex-col justify-center'
+      >
+        <p class='text-6xl font-bold text-purple-500 dark:text-purple-400'>2+</p>
+        <p class='text-slate-700 dark:text-slate-400 mt-2'>años de experiencia</p>
+        <p class='text-slate-500 dark:text-slate-500 text-sm mt-4'>en e-commerce enterprise</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id='skills' class='max-w-6xl mx-auto px-4 py-8 scroll-mt-20'>
+    <h2 class='text-2xl md:text-3xl font-bold mb-6'>
+      <span class='text-purple-400'>#</span> Stack Técnico
+    </h2>
+    <div class='grid grid-cols-2 md:grid-cols-4 gap-3'>
+      {
+        [
+          'TypeScript',
+          'React',
+          'Node.js',
+          'GraphQL',
+          'Astro',
+          'Tailwind CSS',
+          'Vitest',
+          'VTEX IO',
+        ].map((skill) => (
+          <div class='bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 rounded-xl p-4 text-center hover:border-purple-500/50 transition'>
+            {skill}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id='projects' class='max-w-6xl mx-auto px-4 py-8 scroll-mt-20'>
+    <h2 class='text-2xl md:text-3xl font-bold mb-6'>
+      <span class='text-purple-400'>#</span> Proyectos
+    </h2>
+    <div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+      {
+        projects.map((project) => (
+          <article class='bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 rounded-2xl p-6 hover:border-purple-500/50 transition'>
+            <h3 class='text-lg font-semibold mb-2'>{project.data.title}</h3>
+            <p class='text-sm text-slate-500 dark:text-slate-400 mb-3'>
+              {project.data.client}
+            </p>
+            <p class='text-sm text-slate-700 dark:text-slate-300 mb-4 line-clamp-3'>
+              {project.data.description}
+            </p>
+            <div class='flex flex-wrap gap-2'>
+              {project.data.techStack.slice(0, 3).map((tech: string) => (
+                <span class='text-xs px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md text-slate-700 dark:text-slate-300'>
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- STOREFRONT (la isla interactiva de React) -->
+  <section id='storefront' class='max-w-6xl mx-auto px-4 py-8 scroll-mt-20'>
+    <h2 class='text-2xl md:text-3xl font-bold mb-6'>
+      <span class='text-purple-400'>#</span> Storefront Showcase
+    </h2>
+    <p class='text-slate-600 dark:text-slate-400 mb-6 max-w-3xl'>
+      Componentes interactivos inspirados en VTEX. Geolocalización, precios dinámicos y
+      carrito persistente — desarrollados con React + TDD estricto.
+    </p>
+
+    <!-- AQUÍ ESTÁ LA ISLA REACT -->
+    <StorefrontShowcase client:load />
+  </section>
+
+  <!-- CONTACT -->
+  <section id='contact' class='max-w-6xl mx-auto px-4 py-16 scroll-mt-20'>
+    <div
+      class='bg-gradient-to-br from-purple-900/30 to-slate-900 border border-purple-500/20 rounded-3xl p-8 md:p-12 text-center'
+    >
+      <h2 class='text-2xl md:text-3xl font-bold mb-3'>¿Trabajamos juntos?</h2>
+      <p class='text-slate-400 mb-6 mx-auto'>
+        Disponible para proyectos freelance, consultoría y colaboraciones en e-commerce.
+      </p>
+      <a
+        href='mailto:carlos@example.com'
+        class='inline-block px-6 py-3 bg-purple-500 hover:bg-purple-600 rounded-lg font-medium transition'
+      >
+        Enviar email
+      </a>
+    </div>
+  </section>
+</Layout>
