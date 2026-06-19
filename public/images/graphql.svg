@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Fondo con gradiente -->
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gql" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e535ab"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg2)"/>
+
+  <!-- Diagrama de nodos GraphQL -->
+  <!-- Nodo central -->
+  <circle cx="200" cy="150" r="35" fill="url(#gql)" opacity="0.95"/>
+  <text x="200" y="156" text-anchor="middle" fill="#ffffff" font-size="12" font-family="system-ui, -apple-system, sans-serif" font-weight="700">
+    GQL
+  </text>
+
+  <!-- Nodos conectados -->
+  <line x1="200" y1="150" x2="100" y2="80" stroke="url(#gql)" stroke-width="2" opacity="0.6"/>
+  <circle cx="100" cy="80" r="18" fill="#e535ab" opacity="0.7"/>
+  <text x="100" y="85" text-anchor="middle" fill="#ffffff" font-size="9" font-family="system-ui, -apple-system, sans-serif" font-weight="600">Q</text>
+
+  <line x1="200" y1="150" x2="300" y2="80" stroke="url(#gql)" stroke-width="2" opacity="0.6"/>
+  <circle cx="300" cy="80" r="18" fill="#a855f7" opacity="0.7"/>
+  <text x="300" y="85" text-anchor="middle" fill="#ffffff" font-size="9" font-family="system-ui, -apple-system, sans-serif" font-weight="600">M</text>
+
+  <line x1="200" y1="150" x2="100" y2="220" stroke="url(#gql)" stroke-width="2" opacity="0.6"/>
+  <circle cx="100" cy="220" r="18" fill="#e535ab" opacity="0.7"/>
+  <text x="100" y="225" text-anchor="middle" fill="#ffffff" font-size="9" font-family="system-ui, -apple-system, sans-serif" font-weight="600">Q</text>
+
+  <line x1="200" y1="150" x2="300" y2="220" stroke="url(#gql)" stroke-width="2" opacity="0.6"/>
+  <circle cx="300" cy="220" r="18" fill="#a855f7" opacity="0.7"/>
+  <text x="300" y="225" text-anchor="middle" fill="#ffffff" font-size="9" font-family="system-ui, -apple-system, sans-serif" font-weight="600">S</text>
+
+  <!-- Texto inferior -->
+  <text x="200" y="270" text-anchor="middle" fill="#e0e7ff" font-size="18" font-family="system-ui, -apple-system, sans-serif" font-weight="600">
+    Consultoría GraphQL
+  </text>
+</svg>

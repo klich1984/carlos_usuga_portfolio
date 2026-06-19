@@ -15,7 +15,7 @@ const PRODUCTS: Product[] = [
     name: 'Servicio VTEX',
     description: 'Implementación de storefront VTEX con React y TypeScript',
     prices: { CO: 2500000, US: 750 },
-    image: '/images/vtex-service.jpg',
+    image: '/images/vtex-service.svg',
     tags: ['VTEX-inspired', 'Oferta'],
   },
   {
@@ -23,7 +23,7 @@ const PRODUCTS: Product[] = [
     name: 'Consultoría GraphQL',
     description: 'API GraphQL para e-commerce escalable',
     prices: { CO: 1800000, US: 540 },
-    image: '/images/graphql.jpg',
+    image: '/images/graphql.svg',
     tags: ['GraphQL'],
   },
   {
@@ -31,7 +31,7 @@ const PRODUCTS: Product[] = [
     name: 'Optimización Performance',
     description: 'Auditoría Lighthouse y Core Web Vitals',
     prices: { CO: 1200000, US: 360 },
-    image: '/images/perf.jpg',
+    image: '/images/perf.svg',
     tags: ['Lighthouse'],
   },
 ]
@@ -43,11 +43,30 @@ const PRODUCTS: Product[] = [
 const LocationSelector: React.FC = () => {
   const { location, setLocation } = useGeoLocation()
   return (
-    <div data-testid='location-selector'>
-      <button onClick={() => setLocation('CO')} aria-pressed={location === 'CO'}>
+    <div
+      data-testid='location-selector'
+      className='inline-flex bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg p-1 gap-1'
+    >
+      <button
+        onClick={() => setLocation('CO')}
+        aria-pressed={location === 'CO'}
+        className={`px-3 py-1.5 text-sm rounded-md transition ${
+          location === 'CO'
+            ? 'bg-purple-500 text-white'
+            : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700'
+        }`}
+      >
         Colombia (COP)
       </button>
-      <button onClick={() => setLocation('US')} aria-pressed={location === 'US'}>
+      <button
+        onClick={() => setLocation('US')}
+        aria-pressed={location === 'US'}
+        className={`px-3 py-1.5 text-sm rounded-md transition ${
+          location === 'US'
+            ? 'bg-purple-500 text-white'
+            : 'text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700'
+        }`}
+      >
         Estados Unidos (USD)
       </button>
     </div>
@@ -65,14 +84,18 @@ export const StorefrontShowcase: React.FC = () => {
         <section
           data-testid='storefront-showcase'
           aria-label='Storefront E-Commerce Showcase'
+          className='bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 text-slate-900 dark:text-slate-100'
         >
-          <header>
-            <h2>Storefront Showcase</h2>
+          <header className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 md:mb-8'>
+            <h2 className='text-xl md:text-2xl font-bold'>Catálogo</h2>
             <LocationSelector />
           </header>
 
-          {/* Catálogo de productos */}
-          <div data-testid='product-catalog'>
+          {/* Catálogo de productos - grilla responsiva */}
+          <div
+            data-testid='product-catalog'
+            className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6'
+          >
             {PRODUCTS.map((product) => (
               <ProductCardWrapper key={product.id} product={product} />
             ))}

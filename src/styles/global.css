@@ -1,10 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* Dark mode por clase (no por media query) */
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Custom theme tokens for portfolio */
 @theme {
-  /* Colors - Dark First */
-  --color-background: #0a0a0f;
-  --color-foreground: #fafafa;
+  /* Colors - Light theme (default) */
+  --color-background: #ffffff;
+  --color-foreground: #18181b;
   --color-muted: #71717a;
   --color-accent: #6366f1;
   --color-accent-hover: #4f46e5;
@@ -20,17 +23,16 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
 
-  /* Spacing scale */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 3rem;
-
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Fira Code', ui-monospace, monospace;
+}
+
+/* Override de tokens cuando hay clase .dark en <html> */
+:root.dark {
+  --color-background: #0a0a0f;
+  --color-foreground: #fafafa;
+  --color-muted: #71717a;
 }
 
 /* Base styles */
@@ -39,6 +41,7 @@ html {
   color: var(--color-foreground);
   font-family: var(--font-sans);
   scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {

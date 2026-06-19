@@ -27,6 +27,8 @@ const CART_STORAGE_KEY = 'cart'
 // ============================================
 
 const saveToStorage = (items: CartItem[]) => {
+  // Guard: localStorage solo existe en el browser
+  if (typeof window === 'undefined') return
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify({ items }))
 }
 
@@ -35,6 +37,8 @@ const saveToStorage = (items: CartItem[]) => {
 // ============================================
 
 const loadFromStorage = (): CartItem[] => {
+  // Guard: localStorage solo existe en el browser
+  if (typeof window === 'undefined') return []
   const stored = localStorage.getItem(CART_STORAGE_KEY)
   if (!stored) return []
   try {
@@ -50,12 +54,21 @@ const loadFromStorage = (): CartItem[] => {
 // ============================================
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>(() => loadFromStorage())
+  // Inicializar vacío (SSR-safe). El carrito se carga en useEffect (client-only)
+  const [items, setItems] = useState<CartItem[]>([])
+  const [hydrated, setHydrated] = useState(false)
 
-  // Persistir cambios en localStorage
+  // Cargar desde localStorage SOLO en el cliente (después de hidratación)
   useEffect(() => {
+    setItems(loadFromStorage())
+    setHydrated(true)
+  }, [])
+
+  // Persistir cambios en localStorage solo después de hidratar
+  useEffect(() => {
+    if (!hydrated) return
     saveToStorage(items)
-  }, [items])
+  }, [items, hydrated])
 
   // Agregar producto al carrito
   const addToCart = useCallback((product: Product) => {
