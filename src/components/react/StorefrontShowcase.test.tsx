@@ -15,10 +15,12 @@ describe('StorefrontShowcase', () => {
   // ============================================
   it('muestra el título del showcase', () => {
     render(<StorefrontShowcase />)
-    // Usamos heading role para ser específicos al <h2>
+    // El showcase tiene un h2 con "Catálogo" como título
     expect(
-      screen.getByRole('heading', { name: /storefront showcase/i })
+      screen.getByRole('heading', { name: /catálogo/i })
     ).toBeInTheDocument()
+    // Y se identifica con data-testid
+    expect(screen.getByTestId('storefront-showcase')).toBeInTheDocument()
   })
 
   // ============================================
@@ -82,14 +84,15 @@ describe('StorefrontShowcase', () => {
     const user = userEvent.setup()
     render(<StorefrontShowcase />)
 
-    // El panel no debe estar visible inicialmente
-    expect(screen.queryByTestId('cart-panel')).not.toBeInTheDocument()
+    // El panel existe en el DOM pero está oculto (translate-x-full)
+    const cartPanel = screen.getByTestId('cart-panel')
+    expect(cartPanel).toHaveClass('translate-x-full')
 
     // Click en abrir carrito
     await user.click(screen.getByTestId('open-cart'))
 
-    // Ahora el panel debe estar visible
-    expect(screen.getByTestId('cart-panel')).toBeInTheDocument()
+    // Ahora el panel debe estar visible (translate-x-0)
+    expect(screen.getByTestId('cart-panel')).toHaveClass('translate-x-0')
   })
 
   // ============================================
