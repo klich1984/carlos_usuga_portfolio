@@ -1,8 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [develop]
+  # Manual trigger only — protects the live site on main while develop is in progress
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for deploy (optional)'
+        required: false
+        default: 'manual'
 
 permissions:
   contents: read
